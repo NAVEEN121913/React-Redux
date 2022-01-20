@@ -1,7 +1,8 @@
+import { combineReducers } from 'redux';
 import {COUNT_INCREMENT,COUNT_DECREMENT, PUSH, POP} from './action'
 import { countInitialState } from './initialstate';
 
-const countreducer = (state =countInitialState, action )=>{
+export const countreducer = (state =countInitialState, action )=>{
     switch (action.type) {
         case COUNT_INCREMENT:{
            return {...state, count : state.count+1};
@@ -36,11 +37,9 @@ const arrayReducre = (state = [], action )=>{
 }
 
 
-const rootReducer = (state = {}, action)=>{
-    return{
-        counting : countreducer(state.counting, action),
-        arraying : arrayReducre(state.arraying, action)
+const rootReducer = combineReducers({
+        counting : countreducer,
+        arraying : arrayReducre
     }
-}
-
+)
 export default rootReducer

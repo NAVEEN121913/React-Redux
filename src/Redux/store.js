@@ -1,5 +1,5 @@
 import * as redux from 'redux'
-import rootReducer from './reducer';
+import rootReducer, { countreducer } from './reducer';
 
 
 const store = redux.createStore(rootReducer)
